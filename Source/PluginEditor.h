@@ -107,8 +107,6 @@ public:
     void paint (juce::Graphics&) override;
     void resized() override;
 
-    //void buttonClicked(juce::Button* button);
-
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
