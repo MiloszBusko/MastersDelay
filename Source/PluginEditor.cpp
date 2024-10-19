@@ -25,7 +25,7 @@ void LookAndFeel::drawRotarySlider(juce::Graphics& g,
 
     auto enabled = slider.isEnabled();
 
-    g.setColour(enabled ? Colour(255u, 126u, 13u) : Colours::darkgrey); //apka Digital Color Meter
+    g.setColour(enabled ? Colour(255u, 126u, 13u) : Colours::darkgrey);
     g.fillEllipse(bounds);
 
     g.setColour(enabled ? Colour(207u, 34u, 0u) : Colours::grey);
@@ -47,7 +47,7 @@ void LookAndFeel::drawRotarySlider(juce::Graphics& g,
 
         jassert(rotaryStartAngle < rotaryEndAngle);
 
-        auto sliderAngRad = jmap(sliderPosProportional, 0.f, 1.f, rotaryStartAngle, rotaryEndAngle); //zmapowanie wartosci radionow pomiedzy granice rotary slidera
+        auto sliderAngRad = jmap(sliderPosProportional, 0.f, 1.f, rotaryStartAngle, rotaryEndAngle);
 
         p.applyTransform(AffineTransform().rotated(sliderAngRad, center.getX(), center.getY()));
 
@@ -126,7 +126,6 @@ void RotarySliderWithLabels::paint(juce::Graphics& g)
         endAng,
         *this);
 
-    //$12 rysowanie wartosci granicznych
     auto center = sliderBounds.toFloat().getCentre();
     auto radius = sliderBounds.getWidth() * 0.5f;
 
@@ -161,7 +160,6 @@ void RotarySliderWithLabels::paint(juce::Graphics& g)
 
         g.drawFittedText(str, r.toNearestInt(), juce::Justification::verticallyCentred, 1);
     }
-    //$12
 }
 
 juce::Rectangle<int> RotarySliderWithLabels::getSliderBounds() const
@@ -202,7 +200,7 @@ juce::String RotarySliderWithLabels::getDisplayString() const
 
             auto perc = showPercentages[i].showPercentage;
             if (perc == true) {
-                str = juce::String(percentValue) + " %"; // 1 decimal place
+                str = juce::String(percentValue) + " %";
             }
             else {
                 str = juce::String(val);
@@ -210,7 +208,7 @@ juce::String RotarySliderWithLabels::getDisplayString() const
         }
         else
         {
-            jassertfalse; //to sie nie powinno przydac ale jest na wszelki wypadek
+            jassertfalse;
         }
     }
 
@@ -225,7 +223,7 @@ juce::String RotarySliderWithLabels::getDisplayString() const
     }
     else
     {
-        jassertfalse; //to sie nie powinno przydac ale jest na wszelki wypadek
+        jassertfalse;
     }
 
     if (suffix.isNotEmpty())
@@ -270,7 +268,7 @@ void RotarySliderWithLabels::showTextEditor()
         }
         else
         {
-            jassertfalse; //to sie nie powinno przydac ale jest na wszelki wypadek
+            jassertfalse;
         }
     }
     else if (suffix == "Voices") {
@@ -296,8 +294,6 @@ void RotarySliderWithLabels::showTextEditor()
 
 void RotarySliderWithLabels::updateSliderValue(juce::TextEditor* editor, juce::Slider* slider)
 {
-    //auto chainSettings = getChainSettings();
-    // Update the slider value
     if (suffix == "ms") {
         double newVal = editor->getText().getDoubleValue() / double(1000);
         slider->setValue(newVal);
@@ -315,7 +311,7 @@ void RotarySliderWithLabels::updateSliderValue(juce::TextEditor* editor, juce::S
         }
         else
         {
-            jassertfalse; //to sie nie powinno przydac ale jest na wszelki wypadek
+            jassertfalse;
         }
     }
     else if (suffix == "Voices") {
